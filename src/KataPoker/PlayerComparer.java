@@ -81,7 +81,11 @@ public class PlayerComparer {
 			Card highCard = players.stream().map(player -> player.getHand().getNonKinds().get(index)).max(Comparator.comparing(Card::getValue)).orElse(null);
 			players = players.stream().filter(player -> player.getHand().getNonKinds().get(index).sameValueAs(highCard)).collect(Collectors.toList());
 			if ( players.size() == 1 ) {
-				return new Win(players.get(0), i == numberOfNonKinds, highCard);
+				// Result is being checked after hand eval or cards were iterated through then add the high card string
+				if ( withHighCardString || i != numberOfNonKinds)
+					return new Win(players.get(0), highCard);
+				
+				return new Win(players.get(0));
 			}
 		}
 		return new Tie();
