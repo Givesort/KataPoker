@@ -19,7 +19,8 @@ public class KataPokerMain {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Lets compare poker hands!");
 		System.out.println("Type exit and press enter to stop running");
-		System.out.println("Type all 5 cards separated by spaces in a hand then press enter to enter a hand.");
+		System.out.println("For each player, type all five cards separated by spaces then press enter. Case doesn't matter.");
+		System.out.println("Example: ah kd 5c ts 2c\n");
 		
 		while(players.size() > 0) {
 			for ( int i = 0; i < players.size(); i++ ) {
@@ -27,7 +28,7 @@ public class KataPokerMain {
 				String hand = scanner.nextLine();
 				
 				// Check if user wants to exit
-				if ( hand.contains("exit") ) {
+				if ( hand.toLowerCase().contains("exit") ) {
 					scanner.close();
 					return;
 				}

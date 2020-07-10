@@ -14,7 +14,7 @@ import result.Result;
 import result.Tie;
 import result.Win;
 
-class playerComparerTest {
+class PlayerComparerTest {
 	// define a list of 2 players
 	List<Player> players = Arrays.asList( new Player[] {new Player("one"), new Player("two")} );
 	
