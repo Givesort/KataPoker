@@ -50,7 +50,16 @@ public class Hand {
 	}
 	
 	public boolean isValid() {
-		return cards.stream().distinct().count() == handSize;
+		if ( cards != null && cards.size() != handSize )
+			return false;
+		
+		// Go through all the cards and if there are duplicates then return false
+		for ( Card card : cards ) {
+			if ( cards.stream().filter(c -> c.equals(card)).count() != 1)
+				return false;
+		}
+		
+		return true;
 	}
 
 	private void setKinds() {

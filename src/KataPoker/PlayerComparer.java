@@ -88,10 +88,17 @@ public class PlayerComparer {
 	}
 	
 	public static boolean situationValid(List<Player> players) {
-		boolean isValid = players.stream().filter(player -> player.getHand().isValid()).count() == players.size();
-		List<Card> allCards = players.stream().map(player -> player.getHand().getCards()).flatMap(x -> x.stream()).collect(Collectors.toList());
+		if ( players.stream().filter(player -> ! player.getHand().isValid()).count() != 0 )
+			return false;
 		
-		return isValid && allCards.size() == allCards.stream().distinct().count();
+		// Go through all the cards and if there are duplicates then return false
+		List<Card> allCards = players.stream().map(player -> player.getHand().getCards()).flatMap(x -> x.stream()).collect(Collectors.toList());
+		for ( Card card : allCards ) {
+			if ( allCards.stream().filter(c -> c.equals(card)).count() != 1)
+				return false;
+		}
+		
+		return true;
 	}
 	
 }
