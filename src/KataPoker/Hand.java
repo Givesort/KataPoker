@@ -155,10 +155,11 @@ public class Hand {
 		
 		switch (arrangement) {
 		case STRAIGHTFLUSH:
-		case FLUSH:
 		case STRAIGHT:
 			return arrangement.toString() + ": " + cards.get(0).getCardValue().toString()
 					+ " to " + cards.get(cards.size() - 1).getCardValue().toString();
+		case FLUSH:
+			return arrangement.toString();
 		case FOUROFAKIND:
 			return arrangement.toString() + ": " + fourKindCard.getCardValue().toString();
 		case FULLHOUSE:
