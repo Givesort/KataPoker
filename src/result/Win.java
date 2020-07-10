@@ -1,7 +1,7 @@
 package result;
 
-import KataPoker.Card;
-import KataPoker.Player;
+import player.Player;
+import pokerComponents.Card;
 
 public class Win extends Result{
 
@@ -33,7 +33,11 @@ public class Win extends Result{
 		}
 		
 		return winString.toString();
-		
+	}
+	
+	@Override
+	public Player getWinner() {
+		return winner;
 	}
 
 }

@@ -1,10 +1,11 @@
-package KataPoker;
+package player;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import enums.HandArrangement;
+import pokerComponents.Card;
 import result.*;
 
 public class PlayerComparer {

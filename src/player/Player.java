@@ -1,4 +1,6 @@
-package KataPoker;
+package player;
+
+import pokerComponents.Hand;
 
 public class Player {
 	private Hand hand = null;

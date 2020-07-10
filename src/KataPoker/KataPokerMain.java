@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import player.Player;
+import player.PlayerComparer;
 import result.Result;
 
-public class PokerManager {
+public class KataPokerMain {
 	public static void main(String[] args) {		
 		// Add players
 		List<Player> players = new ArrayList<Player>();
@@ -22,7 +24,7 @@ public class PokerManager {
 		while(players.size() > 0) {
 			for ( int i = 0; i < players.size(); i++ ) {
 				System.out.print(players.get(i).getName() + ": ");
-				String hand = scanner.nextLine().trim();
+				String hand = scanner.nextLine();
 				
 				// Check if user wants to exit
 				if ( hand.contains("exit") ) {

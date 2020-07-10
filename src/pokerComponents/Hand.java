@@ -1,4 +1,4 @@
-package KataPoker;
+package pokerComponents;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class Hand {
 		List<Card> cards = new ArrayList<Card>();
 		
 		// Iterate through string and convert value suit pairs and convert to cards
-		for (String card : hand.toLowerCase().split(" ")) {
+		for (String card : hand.trim().toLowerCase().split(" ")) {
 			if ( card.length() == 2 ) {
 				CardValue value = CardValue.get(card.substring(0, 1));
 				CardSuit suit = CardSuit.get(card.substring(1));
@@ -50,11 +50,14 @@ public class Hand {
 	}
 	
 	public boolean isValid() {
-		if ( cards != null && cards.size() != handSize )
+		if ( cards == null || cards.size() != handSize )
 			return false;
 		
-		// Go through all the cards and if there are duplicates then return false
 		for ( Card card : cards ) {
+			// return false if any card isn't valid
+			if ( !card.isValid() )
+				return false;
+			// return false if there are any duplicates
 			if ( cards.stream().filter(c -> c.equals(card)).count() != 1)
 				return false;
 		}

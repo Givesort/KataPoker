@@ -1,4 +1,4 @@
-package KataPoker;
+package pokerComponents;
 
 import enums.CardSuit;
 import enums.CardValue;
